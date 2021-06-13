@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@300;400;700&display=swap");
+/* rgb(48,54,51) */
+/* rgb(139, 232, 203)  */
+/* rgb(156, 122, 151) */
+/****************
+mixins
+****************/
+/****************
+basic styles
+****************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: #303633;
+  line-height: 1.6;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+h1, h2, h3 {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+h1, h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+h1::after, h2::after {
+  display: block;
+  content: "";
+  width: 70px;
+  height: 2px;
+  background: #9c7a97;
+  margin: 20px 0;
+}
+
+h3 {
+  font-size: 2rem;
+  color: #9c7a97;
+}
+
+button {
+  background: transparent;
+  color: #8bebcd;
+  padding: 10px 30px;
+  border: 2px solid #8bebcd;
+  font-size: 1rem;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 20px 0;
+}
+button:hover {
+  color: #9c7a97;
+  border: 2px solid #9c7a97;
+}
+
+/****************
+main
+****************/
+main {
+  flex: 0 0 60%;
+  order: 2;
+  overflow-y: scroll;
+  height: 100vh;
+  padding: 40px;
+}
+main .portfolio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+main .portfolio::before {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #f2f2f2;
+  margin: 20px 0;
+}
+main .portfolio h2 {
+  flex: 0 0 100%;
+}
+main .portfolio article {
+  flex: 0 0 48%;
+  padding: 20px 0;
+}
+main .portfolio article img {
+  width: 100%;
+}
+main .portfolio article img:hover {
+  transform: scale(105%);
+  transition: 0.3s ease;
+}
+main .contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+main .contact::before {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #f2f2f2;
+  margin: 20px 0;
+}
+main .contact h2 {
+  flex: 0 0 100%;
+}
+main .contact p {
+  flex: 0 0 100%;
+  margin-bottom: 20px;
+}
+main .contact .contact-form {
+  flex: 0 0 65%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+main .contact .contact-form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  flex: 0 0 48%;
+  background-color: #f2f2f2;
+  border: none;
+}
+main .contact .contact-form textarea {
+  flex: 0 0 100%;
+  background-color: #f2f2f2;
+  border: none;
+}
+main .contact .contact-form button {
+  background: #9c7a97;
+  color: #fff;
+  border: none;
+}
+main .contact .contact-form button:hover {
+  background: #8bebcd;
+  color: #fff;
+}
+main .contact .contact-info {
+  flex: 0 0 30%;
+}
+main .contact .contact-info i {
+  color: #9c7a97;
+  margin-right: 5px;
+}
+
+/****************
+aside
+****************/
+aside {
+  flex: 0 0 40%;
+  order: 1;
+  background: linear-gradient(rgba(48, 54, 51, 0.7), rgba(156, 122, 151, 0.7), rgba(156, 122, 151, 0.7)), url(img/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 80px;
+}
+aside img {
+  width: 40%;
+  border-radius: 50%;
+  border: 5px solid #9c7a97;
+}
+aside p {
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: right;
+  padding: 20px 0;
+}
+aside p span {
+  font-style: italic;
+  color: #8bebcd;
+  font-weight: bold;
+}
+aside .social {
+  margin-top: 20px;
+}
+aside .social a {
+  margin-left: 20px;
+  transition: 0.3s ease;
+  color: #8bebcd;
+}
+aside .social a:hover {
+  color: #fff;
+}
+aside .social a i {
+  font-size: 2rem;
+}
+
+/****************
+responsive
+****************/
+@media (max-width: 767px) {
+  body {
+    flex-direction: column;
+  }
+
+  h1, h2 {
+    font-size: 2rem;
+    align-self: flex-start;
+  }
+  h1::after, h2::after {
+    width: 40px;
+    margin: 5px 0;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  aside {
+    flex: 0 0 100%;
+    padding: 20px;
+  }
+  aside img {
+    width: 70%;
+  }
+  aside p {
+    font-size: 1.3rem;
+    align-self: flex-start;
+    text-align: left;
+    padding: 0 0 20px 0;
+  }
+  aside .social {
+    margin: 20px auto;
+  }
+
+  main {
+    flex: 0 0 100%;
+    padding: 20px;
+  }
+  main .portfolio {
+    flex-direction: column;
+  }
+  main .portfolio::before {
+    margin: 10px 0;
+  }
+  main .portfolio article {
+    flex: 0 0 100%;
+  }
+  main .contact {
+    flex-direction: column;
+  }
+  main .contact::before {
+    margin: 10px 0;
+  }
+  main .contact .contact-form {
+    flex: 0 0 100%;
+    justify-content: center;
+  }
+  main .contact .contact-form input {
+    flex: 0 0 100%;
+  }
+  main .contact .contact-info {
+    flex: 0 0 100%;
+  }
+  main .contact .contact-info p {
+    text-align: center;
+  }
+  main .contact .contact-info i {
+    font-size: 2rem;
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

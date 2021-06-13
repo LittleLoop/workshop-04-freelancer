@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@300;400;700&display=swap');
+
+$gray: #303633;  /* rgb(48,54,51) */
+$lightGray: #f2f2f2;
+$green: #8bebcd; /* rgb(139, 232, 203)  */
+$pink: #9c7a97;  /* rgb(156, 122, 151) */
+$white: #fff;
+$headings: 'Source Sans Pro', sans-serif;
+$text: 'Lato', sans-serif;
+$transition: .3s ease;
+$font: 16px;
+
+/****************
+mixins
+****************/
+@mixin flex($justify, $align, $direction) {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: $justify;
+	align-items: $align;
+	flex-direction: $direction;
+}
+
+@mixin linija() {
+	display: block;
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: $lightGray;
+	margin: 20px 0;
+}
+/****************
+basic styles
+****************/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: $text;
+	font-size: $font;
+	color: $gray;
+	line-height: 1.6;
+	@include flex(space-between, center, row);
+}
+h1,h2,h3 {
+	font-family: $headings;
+}
+
+h1,h2 {
+	font-size: 2.5rem;
+	font-weight: 400;
+	&::after {
+		display: block;
+		content: '';
+		width: 70px;
+		height: 2px;
+		background: $pink;
+		margin: 20px 0;
+	}
+}
+h3 {
+	font-size: 2rem;
+	color: $pink;
+}
+button {
+	background: transparent;
+	color: $green;
+	padding: 10px 30px;
+	border: 2px solid $green;
+	font-size: 1rem;
+	border-radius: 10px;
+	transition: $transition;
+	cursor: pointer;
+	font-weight: bold;
+	margin: 20px 0;
+	&:hover {
+		color: $pink;
+		border: 2px solid $pink;
+	}
+}
+
+/****************
+main
+****************/
+main {
+	flex: 0 0 60%;
+	order: 2;
+	overflow-y: scroll;
+	height: 100vh;
+	padding: 40px;
+	// portfolio
+	.portfolio {
+		&::before {
+			@include linija();
+		}
+		@include flex(space-between, center, row);
+		h2 {
+			flex: 0 0 100%;
+		}
+		article {
+			flex: 0 0 48%;
+			padding: 20px 0;
+			img {
+				width: 100%;
+				&:hover {
+					transform: scale(105%);
+					transition: $transition;
+				}
+			}
+		}
+	}
+	// contact
+	.contact {
+		&::before {
+			@include linija();
+		}
+		@include flex(space-between, center, row);
+		h2 {
+			flex: 0 0 100%;
+		}
+		p {
+			flex: 0 0 100%;
+			margin-bottom: 20px;
+		}
+		.contact-form {
+			flex: 0 0 65%;
+			@include flex(space-between, center, row);
+			input {
+				padding: 10px;
+				margin-bottom: 10px;
+				flex: 0 0 48%;
+				background-color: $lightGray;
+				border: none;
+			}
+			textarea {
+				flex: 0 0 100%;
+				background-color: $lightGray;
+				border: none;
+			}
+			button {
+				background: $pink;
+				color: $white;
+				border: none;
+				&:hover {
+					background: $green;
+					color: $white;
+				}
+			}
+		}
+		.contact-info {
+			flex: 0 0 30%;
+			i {
+				color: $pink;
+				margin-right: 5px;
+			}
+		}
+	}
+}
+
+/****************
+aside
+****************/
+aside {
+	flex: 0 0 40%;
+	order: 1;
+	background: linear-gradient(rgba(48,54,51, 0.7),rgba(156, 122, 151, 0.7), rgba(156, 122, 151, 0.7)), url(img/bg.jpg);
+	background-position: center;
+	background-size: cover;
+	height: 100vh;
+	@include flex(center, flex-end, column);
+	padding: 80px;
+	img {
+		width: 40%;
+		border-radius: 50%;
+		border: 5px solid $pink;
+	}
+	p {
+		font-size: 1.5rem;
+		color: $white;
+		text-align: right;
+		padding: 20px 0;
+		span {
+			font-style: italic;
+			color: $green;
+			font-weight: bold;
+		}
+	}
+	.social {
+		margin-top: 20px;
+		a {
+			margin-left: 20px;
+			transition: $transition;
+			color: $green;
+			&:hover {
+				color: $white;
+			}
+			i {
+				font-size: 2rem;
+			}
+		}
+	}
+}
+
+/****************
+responsive
+****************/
+@media (max-width: 767px) {
+	body {
+		flex-direction: column;
+	}
+
+	h1,h2 {
+		font-size: 2rem;
+		align-self: flex-start;
+		&::after {
+			width: 40px;
+			margin: 5px 0;
+		}
+	}
+
+	h3 {
+		font-size: 1.5rem;
+	}
+
+	aside	{
+		flex: 0 0 100%;
+		padding: 20px;
+		img {
+			width: 70%;
+		}
+		p {
+			font-size: 1.3rem;
+			align-self: flex-start;
+			text-align: left;
+			padding: 0 0 20px 0;
+		}
+		.social {
+			margin: 20px auto;
+		}
+	}
+	main {
+		flex: 0 0 100%;
+		padding: 20px;
+		.portfolio {
+			&::before {
+				margin: 10px 0;
+			}
+			flex-direction: column;
+			article {
+				flex: 0 0 100%;
+			}
+		}
+		.contact {
+			&::before {
+				margin: 10px 0;
+			}
+			flex-direction: column;
+			.contact-form {
+				flex: 0 0 100%;
+				justify-content: center;
+				input {
+					flex: 0 0 100%;
+				}
+			}
+			.contact-info {
+				flex: 0 0 100%;
+				p {
+					text-align: center;
+				}
+				i {
+					font-size: 2rem;
+					display: block;
+				}
+			}
+		}
+	}
+}
