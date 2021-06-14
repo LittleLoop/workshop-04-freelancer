@@ -242,6 +242,7 @@ responsive
 	}
 	main {
 		flex: 0 0 100%;
+		overflow-y: visible;
 		padding: 20px;
 		.portfolio {
 			&::before {
